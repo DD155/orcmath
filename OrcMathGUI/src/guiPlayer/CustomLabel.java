@@ -11,5 +11,5 @@ public interface CustomLabel extends Clickable {
 	void updateString2(String string);
 
 	void setIconColor(Color color);
-
+	
 }
