@@ -1,5 +1,6 @@
 package myStuff;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,9 +72,44 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
 	private void addButtons() 
 	{
+		int numberOfButtons = 4;
+		buttons = new ButtonInterfaceDaniel[numberOfButtons];
+		Color[] colors = new Color[numberOfButtons];
 		
+		
+		for (int i = 0; i < numberOfButtons; i++)
+		{
+			colors[i] = new Color(((int)(Math.random())*255),((int)(Math.random())*255),((int)(Math.random())*255));
+			final ButtonInterfaceDaniel b = getAButton();
+			buttons[i] = b;
+			b.setColor(colors[i]);
+			b.setX(10);
+			b.setY(10);
+			
+			b.setAction(new Action()
+			{
+				public void act(){
+					if(acceptingInput)
+					{
+						Thread blink = new Thread(new Runnable()
+						{
+							public void run(){
+							}
+						    	b.highlight();
+							});
+						}
+				}
+			});
+		}
 	}
-	
+	/**
+	Placeholder until partner finishes implementation of ButtonInterface
+	*/
+	private ButtonInterfaceDaniel getAButton() 
+	{
+		return null;
+	}
+
 	/**
 	Placeholder until partner finishes implementation of MoveInterface
 	*/
