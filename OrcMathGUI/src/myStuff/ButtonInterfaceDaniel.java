@@ -9,5 +9,6 @@ public interface ButtonInterfaceDaniel extends Clickable
 
 	void setColor(Color color);
 	void highlight();
+	void dim();
 
 }

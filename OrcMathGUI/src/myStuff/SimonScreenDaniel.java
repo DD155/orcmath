@@ -27,9 +27,73 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	}
 
 	@Override
-	public void run()
+    public void run()
 	{
+
+        label.setText("");
+
+        nextRound();
+
+    }
+
+	private void nextRound()
+	{
+		acceptingInput = false;
+		roundNumber++;
+		move.add(randomMove());
 		
+		// step 4
+		progress.setRound(roundNumber);
+		progress.setSequenceSize(move.size());
+		
+		changeText("Simon's Turn.");
+		playSequence();
+		changeText("Your Turn.");
+		
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void changeText(String string) 
+	{
+		label.setText(string);
+		try 
+		{	
+            Thread.sleep(1000);
+        }
+		catch (InterruptedException e) 
+		{
+            e.printStackTrace();
+        }	
+		label.setText("");
+		
+		
+	}
+
+	private void playSequence() 
+	{
+		ButtonInterfaceDaniel b = null;
+		
+		for (int i = 0; i < move.size(); i++)
+		{
+			if (b != null)
+			{
+				b.dim();			
+			}
+			b = move.get(i).getButton();
+			b.highlight();
+			int sleepTime=10000/roundNumber;
+			try 
+			{	
+	            Thread.sleep(sleepTime);
+	        }
+			catch (InterruptedException e) 
+			{
+	            e.printStackTrace();
+	        }	
+		}
+		
+		b.dim();
 	}
 
 	@Override
@@ -72,32 +136,65 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
 	private void addButtons() 
 	{
-		int numberOfButtons = 4;
-		buttons = new ButtonInterfaceDaniel[numberOfButtons];
-		Color[] colors = new Color[numberOfButtons];
-		
-		
-		for (int i = 0; i < numberOfButtons; i++)
-		{
-			colors[i] = new Color(((int)(Math.random())*255),((int)(Math.random())*255),((int)(Math.random())*255));
-			final ButtonInterfaceDaniel b = getAButton();
-			buttons[i] = b;
-			b.setColor(colors[i]);
-			b.setX(10);
-			b.setY(10);
+			int numberOfButtons = 4;
+			buttons = new ButtonInterfaceDaniel[numberOfButtons];
+			Color[] colors = new Color[numberOfButtons];
+			colors[0] = Color.black;
+			colors[1] = Color.red;
+			colors[2] = Color.blue;
+			colors[3] = Color.green;
 			
-			b.setAction(new Action()
+			for (int i = 0; i < numberOfButtons; i++)
 			{
-				public void act(){
-					if(acceptingInput)
-					{
-						Thread blink = new Thread(new Runnable()
+				final ButtonInterfaceDaniel b = getAButton();
+				buttons[i] = b;
+				b.setColor(colors[i]);
+				b.setX(10);
+				b.setY(10);
+				
+				b.setAction(new Action()
+				{
+					public void act(){
+						if(acceptingInput)
 						{
-							public void run(){
-							}
-						    	b.highlight();
+							Thread blink = new Thread(new Runnable()
+							{
+							    public void run(){
+	
+							        b.highlight();
+	
+							        try {
+	
+							            Thread.sleep(800);
+	
+							        } catch (InterruptedException e) {
+	
+							           
+	
+							            e.printStackTrace();
+	
+							        }
+	
+							        b.dim();
+	
+							    }
 							});
-						}
+							blink.start();
+							
+							if (b == move.get(sequenceIndex).getButton())
+							{
+								sequenceIndex++;
+							}
+							else
+							{
+								progress.gameOver();
+							}
+							
+							if(sequenceIndex == move.size()){
+							    Thread nextRound = new Thread(SimonScreenDaniel.this);
+							    nextRound.start();
+							}
+					}
 				}
 			});
 		}
