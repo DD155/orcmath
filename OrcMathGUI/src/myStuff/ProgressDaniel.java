@@ -5,115 +5,118 @@ import java.awt.image.BufferedImage;
 public class ProgressDaniel implements ProgressInterfaceDaniel
 {
 
-	public ProgressDaniel() {
-		// TODO Auto-generated constructor stub
+	private SimonScreenDaniel a;
+	
+	public ProgressDaniel() 
+	{
+		
 	}
 
 	@Override
-	public BufferedImage getImage() {
-		// TODO Auto-generated method stub
+	public BufferedImage getImage() 
+	{
 		return null;
 	}
 
 	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getX() 
+	{
+		return a.getX();
 	}
 
 	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getY() 
+	{
+		return a.getY();
 	}
 
 	@Override
-	public void setX(int x) {
-		// TODO Auto-generated method stub
+	public void setX(int x) 
+	{
+		x = a.getX();
+	}
+
+	@Override
+	public void setY(int y) 
+	{
+		y = a.getY();
+	}
+
+	@Override
+	public int getWidth() 
+	{
+		return a.getWidth();
+	}
+
+	@Override
+	public int getHeight()
+	{
+		return a.getHeight();
+	}
+
+	@Override
+	public void update() 
+	{
 		
 	}
 
 	@Override
-	public void setY(int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isAnimated() {
-		// TODO Auto-generated method stub
+	public boolean isAnimated() 
+	{
 		return false;
 	}
 
 	@Override
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
+	public void setVisible(boolean b) 
+	{
+
 	}
 
 	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
+	public boolean isVisible() 
+	{
 		return false;
 	}
 
 	@Override
-	public float getAlpha() {
-		// TODO Auto-generated method stub
+	public float getAlpha() 
+	{
 		return 0;
 	}
 
 	@Override
-	public void setAlpha(float f) {
-		// TODO Auto-generated method stub
+	public void setAlpha(float f) 
+	{
 		
 	}
 
 	@Override
-	public void unhoverAction() {
-		// TODO Auto-generated method stub
+	public void unhoverAction() 
+	{
 		
 	}
 
 	@Override
-	public void hoverAction() {
-		// TODO Auto-generated method stub
+	public void hoverAction()
+	{
 		
 	}
 
 	@Override
-	public void gameOver() {
-		// TODO Auto-generated method stub
+	public void gameOver() 
+	{
 		
 	}
 
 	@Override
-	public void setRound(int round) {
-		// TODO Auto-generated method stub
+	public void setRound(int round)
+	{
 		
 	}
 
 	@Override
-	public void setSequenceSize(int size) {
-		// TODO Auto-generated method stub
+	public void setSequenceSize(int size)
+	{
 		
 	}
 

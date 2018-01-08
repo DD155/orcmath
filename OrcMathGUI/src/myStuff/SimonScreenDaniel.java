@@ -10,6 +10,7 @@ import guiTeacher.userInterfaces.*;
 
 public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
+	
 	TextLabel label;                                    
 	ButtonInterfaceDaniel[] buttons;                        
 	ProgressInterfaceDaniel progress;                     
@@ -82,7 +83,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 			}
 			b = move.get(i).getButton();
 			b.highlight();
-			int sleepTime=10000/roundNumber;
+			int sleepTime = 10000/roundNumber;
 			try 
 			{	
 	            Thread.sleep(sleepTime);
@@ -134,43 +135,37 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 		return null;
 	}
 
+
 	private void addButtons() 
 	{
-			int numberOfButtons = 4;
-			buttons = new ButtonInterfaceDaniel[numberOfButtons];
-			Color[] colors = new Color[numberOfButtons];
-			colors[0] = Color.black;
-			colors[1] = Color.red;
-			colors[2] = Color.blue;
-			colors[3] = Color.green;
-			
-			for (int i = 0; i < numberOfButtons; i++)
+			int numberOfButtons = 5;
+			buttons=new ButtonInterfaceDaniel[numberOfButtons];
+			Color[] colors={Color.blue,Color.green,Color.red,Color.orange,Color.pink};
+			for(int i=0;i<numberOfButtons;i++) 
 			{
 				final ButtonInterfaceDaniel b = getAButton();
-				buttons[i] = b;
 				b.setColor(colors[i]);
-				b.setX(10);
-				b.setY(10);
-				
-				b.setAction(new Action()
-				{
-					public void act(){
-						if(acceptingInput)
-						{
-							Thread blink = new Thread(new Runnable()
-							{
-							    public void run(){
+				b.setX(30);
+				b.setY(30);
 	
-							        b.highlight();
+					
+					b.setAction(new Action()
+					{
+						public void act(){
+							if(acceptingInput)
+							{
+								Thread blink = new Thread(new Runnable()
+								{
+								    public void run(){
+		
+								        b.highlight();
 	
 							        try {
 	
 							            Thread.sleep(800);
 	
 							        } catch (InterruptedException e) {
-	
-							           
-	
+								         	
 							            e.printStackTrace();
 	
 							        }

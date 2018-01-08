@@ -6,10 +6,10 @@ import guiTeacher.GUIApplication;
 
 public class SimonGameDaniel extends GUIApplication
 {
-
+	
 	public SimonGameDaniel() 
 	{
-		super(1, 2);
+		super(100, 200);
 	}
 
 	public static void main(String[] args)

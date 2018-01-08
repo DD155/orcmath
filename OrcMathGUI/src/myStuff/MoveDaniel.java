@@ -3,20 +3,23 @@ package myStuff;
 public class MoveDaniel implements MoveInterfaceDaniel
 {
 
-	public MoveDaniel() {
-		// TODO Auto-generated constructor stub
+	private SimonScreenDaniel a;
+	
+	public MoveDaniel() 
+	{
+		a.update();
 	}
 
 	@Override
-	public MoveInterfaceDaniel getMove(int bIndex) {
-		// TODO Auto-generated method stub
-		return null;
+	public MoveInterfaceDaniel getMove(int bIndex) 
+	{
+		return a.move.get(bIndex);
 	}
 
 	@Override
-	public ButtonInterfaceDaniel getButton() {
-		// TODO Auto-generated method stub
-		return null;
+	public ButtonInterfaceDaniel getButton() 
+	{
+		return a.buttons[0];
 	}
 
 }
