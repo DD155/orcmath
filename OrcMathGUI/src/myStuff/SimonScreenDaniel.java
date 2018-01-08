@@ -145,10 +145,9 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 			{
 				final ButtonInterfaceDaniel b = getAButton();
 				b.setColor(colors[i]);
-				b.setX(30);
-				b.setY(30);
-	
-					
+				b.setX(20);
+				b.setY(20);
+						
 					b.setAction(new Action()
 					{
 						public void act(){
@@ -192,6 +191,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 					}
 				}
 			});
+			buttons[i] = b;
 		}
 	}
 	/**
