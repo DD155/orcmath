@@ -3,23 +3,24 @@ package myStuff;
 public class MoveDaniel implements MoveInterfaceDaniel
 {
 
-	private SimonScreenDaniel a;
+	private ButtonDaniel a;
+	private SimonScreenDaniel d;
 	
-	public MoveDaniel() 
+	public MoveDaniel(ButtonDaniel b) 
 	{
-		a.update();
+		this.a = b;
 	}
 
 	@Override
 	public MoveInterfaceDaniel getMove(int bIndex) 
 	{
-		return a.move.get(bIndex);
+		return d.move.get(bIndex);
 	}
 
 	@Override
 	public ButtonInterfaceDaniel getButton() 
 	{
-		return a.buttons[0];
+		return a;
 	}
 
 }

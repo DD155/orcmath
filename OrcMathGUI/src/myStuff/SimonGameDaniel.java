@@ -7,14 +7,15 @@ import guiTeacher.GUIApplication;
 public class SimonGameDaniel extends GUIApplication
 {
 	
-	public SimonGameDaniel() 
+	public SimonGameDaniel(int width, int height) 
 	{
-		super(100, 200);
+		super(width, height);
+		setVisible(true);
 	}
 
 	public static void main(String[] args)
 	{
-		SimonGameDaniel gui = new SimonGameDaniel();
+		SimonGameDaniel gui = new SimonGameDaniel(500,500);
 		Thread go = new Thread(gui);
 		go.start();
 	}

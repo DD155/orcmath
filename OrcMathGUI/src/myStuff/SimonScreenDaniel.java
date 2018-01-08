@@ -132,21 +132,27 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
 	private ProgressInterfaceDaniel getProgress() 
 	{
-		return null;
+		return new ProgressDaniel(0,0,50,50);
 	}
 
 
 	private void addButtons() 
 	{
-			int numberOfButtons = 5;
+			int numberOfButtons = 4;
 			buttons=new ButtonInterfaceDaniel[numberOfButtons];
-			Color[] colors={Color.blue,Color.green,Color.red,Color.orange,Color.pink};
+			Color[] colors= new Color[numberOfButtons];
+			colors[0] = Color.green;
+			colors[1] = Color.red;
+			colors[2] = Color.blue;
+			colors[3] = Color.yellow;
+			
 			for(int i=0;i<numberOfButtons;i++) 
 			{
-				final ButtonInterfaceDaniel b = getAButton();
-				b.setColor(colors[i]);
-				b.setX(20);
-				b.setY(20);
+					final ButtonInterfaceDaniel b = getAButton();
+					buttons[i] = b;
+					b.setColor(colors[i]);
+					b.setX(20);
+					b.setY(20);
 						
 					b.setAction(new Action()
 					{
@@ -191,7 +197,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 					}
 				}
 			});
-			buttons[i] = b;
+
 		}
 	}
 	/**
@@ -199,7 +205,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	*/
 	private ButtonInterfaceDaniel getAButton() 
 	{
-		return null;
+		return new ButtonDaniel(70,70,45,50,"",null);
 	}
 
 	/**
@@ -207,7 +213,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	*/
 	private MoveInterfaceDaniel getMove(int bIndex)
 	{
-	    return null;
+	    return new MoveDaniel((ButtonDaniel) buttons[bIndex]);
 	}
 
 

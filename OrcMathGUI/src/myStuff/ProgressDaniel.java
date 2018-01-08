@@ -1,123 +1,59 @@
 package myStuff;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class ProgressDaniel implements ProgressInterfaceDaniel
+import guiTeacher.components.Component;
+
+public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 {
 
-	private SimonScreenDaniel a;
+	private int round;
+	private int sequence;
+	private boolean isOver;
+	private int x;
+	private int y;
 	
-	public ProgressDaniel() 
+	public ProgressDaniel(int x, int y, int w, int h) 
 	{
-		
+		super(x, y, w, h);
+		this.x = x;
+		this.y = y;
+		isOver = false;
+		round = 1;
+		sequence = 1;
 	}
 
-	@Override
-	public BufferedImage getImage() 
-	{
-		return null;
-	}
-
-	@Override
-	public int getX() 
-	{
-		return a.getX();
-	}
-
-	@Override
-	public int getY() 
-	{
-		return a.getY();
-	}
-
-	@Override
-	public void setX(int x) 
-	{
-		x = a.getX();
-	}
-
-	@Override
-	public void setY(int y) 
-	{
-		y = a.getY();
-	}
-
-	@Override
-	public int getWidth() 
-	{
-		return a.getWidth();
-	}
-
-	@Override
-	public int getHeight()
-	{
-		return a.getHeight();
-	}
-
-	@Override
-	public void update() 
-	{
-		
-	}
-
-	@Override
-	public boolean isAnimated() 
-	{
-		return false;
-	}
-
-	@Override
-	public void setVisible(boolean b) 
-	{
-
-	}
-
-	@Override
-	public boolean isVisible() 
-	{
-		return false;
-	}
-
-	@Override
-	public float getAlpha() 
-	{
-		return 0;
-	}
-
-	@Override
-	public void setAlpha(float f) 
-	{
-		
-	}
-
-	@Override
-	public void unhoverAction() 
-	{
-		
-	}
-
-	@Override
-	public void hoverAction()
-	{
-		
-	}
 
 	@Override
 	public void gameOver() 
 	{
-		
+		isOver = true;
 	}
 
 	@Override
 	public void setRound(int round)
 	{
-		
+		this.round = round;
 	}
 
 	@Override
 	public void setSequenceSize(int size)
 	{
-		
+		sequence = size;
 	}
 
+	@Override
+	public void update(Graphics2D g)
+	{
+		if(!isOver) 
+		{
+			g.drawString(""+round, x, y);
+			g.drawString(""+sequence, x+15, y+20);
+		}
+		else 
+		{
+			g.drawString("Game Over.", x+10, y+10);
+		}		
+	}
 }
