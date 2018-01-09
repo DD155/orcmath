@@ -81,12 +81,14 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 	{
 		move = new ArrayList<MoveInterfaceDaniel>();
 		previous = -1;
-		buttons = new ButtonInterfaceDaniel[4];
-		colors = new Color[4];
+		buttons = new ButtonInterfaceDaniel[6];
+		colors = new Color[6];
 		colors[0] = Color.green;
 		colors[1] = Color.orange;
 		colors[2] = Color.blue;
 		colors[3] = Color.gray;
+		colors[4] = Color.red;
+		colors[5] = Color.cyan;
 	
 		round = 0;
 		sequence = 0;
@@ -165,11 +167,13 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 
 	private MoveInterfaceDaniel randomMove() 
 	{
-		int rnd = (int)(Math.random()*buttons.length);
+		int rnd = (int)(Math.random() * buttons.length);
+		
 		while (rnd == previous)
 		{
-			rnd = (int)(Math.random()*buttons.length);
+			rnd = (int)(Math.random() * buttons.length);
 		}
+		
 		return new MoveDaniel(buttons[rnd]);
 	}
 

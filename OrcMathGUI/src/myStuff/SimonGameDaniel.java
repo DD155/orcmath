@@ -15,7 +15,7 @@ public class SimonGameDaniel extends GUIApplication
 
 	public static void main(String[] args)
 	{
-		SimonGameDaniel gui = new SimonGameDaniel(500,500);
+		SimonGameDaniel gui = new SimonGameDaniel(650,500);
 		Thread go = new Thread(gui);
 		go.start();
 	}

@@ -13,7 +13,7 @@ public class ButtonDaniel extends Button implements ButtonInterfaceDaniel{
 
 	public ButtonDaniel(int x, int y, int w, int h, String text, Action action) 
 	{
-		super(x, y, w, h, "", null);
+		super(x+30, y, w, h, "", null);
 		update();
 	}
 
