@@ -16,7 +16,7 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 	
 	public ProgressDaniel() 
 	{
-		super(250,50,400,200);
+		super(300, 55, 350, 200);
 	}
 
 
@@ -30,28 +30,27 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 	public void update(Graphics2D g)
 	{
 		clear();
-		if(!isOver) {
-			g.setColor(Color.blue);
-		g.fillRect(100, 20, 50, 20);
-		g.setColor(Color.black);
-		g.drawString("Round: "+round,50,105);
-		g.drawString("Current Sequence: "+sequence,30,20);
-		g.drawString("Game Over.",55,150);
-		}else {
-		g.setColor(Color.red);
-		g.fillRect(100, 20, 50, 20);
-		g.setColor(Color.orange);
-		g.drawString("Round: "+round,5,55);
-		g.drawString("Current Sequence: "+sequence,30,20);
-}	
+		if(isOver) 
+		{
+			g.setColor(Color.black);
+			g.drawString("You Are on Round: "+round, 50, 105);
+			g.drawString("Sequence: "+sequence, 30, 20);
+			g.drawString("Game Over.", 55, 150);
+		}
+		else
+		{
+			g.setColor(Color.orange);
+			g.drawString("Round: "+round, 5, 55);
+			g.drawString("Sequence: "+sequence, 30, 20);
+		}	
 	}
 
 
 	@Override
-	public void setNum(int round, int seq) 
+	public void setNum(int round, int sequence) 
 	{
 		this.round = round;
-		sequence = seq;
+		this.sequence = sequence;
 		update();
 		
 	}

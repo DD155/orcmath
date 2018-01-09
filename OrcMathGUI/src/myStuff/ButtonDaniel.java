@@ -34,13 +34,15 @@ public class ButtonDaniel extends Button implements ButtonInterfaceDaniel{
 	@Override
 	public void highlight() 
 	{
-		setColor(Color.yellow);
+		this.setBackground(Color.yellow);
+		update();
 	}
 
 	@Override
 	public void dim() 
 	{	
-		setColor(this.color);
+		this.setBackground(this.color);
+		update();
 	}
 
 }
