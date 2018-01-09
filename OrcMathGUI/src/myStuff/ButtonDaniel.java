@@ -11,16 +11,10 @@ public class ButtonDaniel extends Button implements ButtonInterfaceDaniel{
 
 	private Color color;
 
-	
-	public ButtonDaniel(int x, int y, int w, int h, String text, Color color, Action action) {
-		super(x, y, w, h, text, color, action);
-	}
-
 	public ButtonDaniel(int x, int y, int w, int h, String text, Action action) 
 	{
-		super(x, y, w, h,"",null);
+		super(x, y, w, h, "", null);
 		update();
-
 	}
 
 	@Override
@@ -34,7 +28,7 @@ public class ButtonDaniel extends Button implements ButtonInterfaceDaniel{
 	@Override
 	public void highlight() 
 	{
-		this.setBackground(Color.yellow);
+		this.setBackground(Color.magenta);
 		update();
 	}
 

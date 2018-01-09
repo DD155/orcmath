@@ -43,7 +43,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 		win++;	
 		
 		progress.setNum(round, move.size());
-		move.add(getRandomMove());
+		move.add(randomMove());
 		
 		label.setText("Follow Me.");
 		
@@ -94,7 +94,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 		input = true;
 		
 		
-		label = new TextLabel(70,50,150,100,"Let's Play! Follow Me.");
+		label = new TextLabel(70,250,150,100,"Let's Play! Follow Me.");
 		viewObjects.add(label);
 		
 		for (int i = 0; i < buttons.length; i++) 
@@ -110,51 +110,50 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 				public void act() 
 				{
 					if (input)
-						{
-							Thread light  = new Thread(new Runnable() 
-							{						
-								@Override
-								public void run() 
-								{
-									button.highlight();
-									input = false;
-									try
-									{
-										Thread.sleep(800);
-									}
-									catch(InterruptedException e ) 
-									{
-										e.printStackTrace();
-									}
-									input = true;
-									button.dim();
-								}
-							});
-							light.start();
-							if(button == move.get(sequence).getButton())
-							{ 
-								sequence++;
-							} 
-							else
+					{
+						Thread follow  = new Thread(new Runnable() 
+						{						
+							@Override
+							public void run() 
 							{
-								
-								progress.gameOver();
+								button.highlight();
 								input = false;
+								try
+								{
+									Thread.sleep(800);
+								}
+								catch(InterruptedException e) 
+								{
+									e.printStackTrace();
+								}
+								input = true;
+								button.dim();
 							}
-							if(sequence == move.size())
-							{ 
-							    Thread nextRound = new Thread(SimonScreenDaniel.this); 
-							    nextRound.start(); 
-							}
-						}					
-					}
-				});
-		}
+						});
+						follow.start();
+						if (button == move.get(sequence).getButton())
+						{ 
+							sequence++;
+						} 
+						else
+						{							
+							progress.gameOver();
+							input = false;
+						}
+						if (sequence == move.size())
+						{ 
+						    Thread nextRound = new Thread(SimonScreenDaniel.this); 
+						    nextRound.start(); 
+						}
+					}					
+				}
+			});
+	}
 		
 		progress = getProgress();
 		progress.setNum(round, win);
-		move.add(getRandomMove());
-		move.add(getRandomMove());
+		move.add(randomMove());
+		move.add(randomMove());
 
 		for (int i = 0; i < buttons.length; i++) 
 		{
@@ -164,7 +163,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable
 		viewObjects.add(progress);
 	}
 
-	private MoveInterfaceDaniel getRandomMove() 
+	private MoveInterfaceDaniel randomMove() 
 	{
 		int rnd = (int)(Math.random()*buttons.length);
 		while (rnd == previous)

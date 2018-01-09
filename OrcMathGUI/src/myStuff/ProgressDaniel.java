@@ -16,7 +16,7 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 	
 	public ProgressDaniel() 
 	{
-		super(300, 55, 350, 200);
+		super(100, 50, 350, 200);
 	}
 
 
@@ -33,14 +33,12 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 		if(isOver) 
 		{
 			g.setColor(Color.black);
-			g.drawString("You Are on Round: "+round, 50, 105);
-			g.drawString("Sequence: "+sequence, 30, 20);
-			g.drawString("Game Over.", 55, 150);
+			g.drawString("Game Over.", 0, 50);
 		}
 		else
 		{
-			g.setColor(Color.orange);
-			g.drawString("Round: "+round, 5, 55);
+			g.setColor(Color.black);
+			g.drawString("Round: "+round, 30, 35);
 			g.drawString("Sequence: "+sequence, 30, 20);
 		}	
 	}
