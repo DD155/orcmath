@@ -1,5 +1,6 @@
 package myStuff;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -11,17 +12,11 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 	private int round;
 	private int sequence;
 	private boolean isOver;
-	private int x;
-	private int y;
+
 	
-	public ProgressDaniel(int x, int y, int w, int h) 
+	public ProgressDaniel() 
 	{
-		super(x, y, w, h);
-		this.x = x;
-		this.y = y;
-		isOver = false;
-		round = 1;
-		sequence = 1;
+		super(250,50,400,200);
 	}
 
 
@@ -29,31 +24,35 @@ public class ProgressDaniel extends Component implements ProgressInterfaceDaniel
 	public void gameOver() 
 	{
 		isOver = true;
+		update();
 	}
 
-	@Override
-	public void setRound(int round)
-	{
-		this.round = round;
-	}
-
-	@Override
-	public void setSequenceSize(int size)
-	{
-		sequence = size;
-	}
-
-	@Override
 	public void update(Graphics2D g)
 	{
-		if(!isOver) 
-		{
-			g.drawString(""+round, x, y);
-			g.drawString(""+sequence, x+15, y+20);
-		}
-		else 
-		{
-			g.drawString("Game Over.", x+10, y+10);
-		}		
+		clear();
+		if(!isOver) {
+			g.setColor(Color.blue);
+		g.fillRect(100, 20, 50, 20);
+		g.setColor(Color.black);
+		g.drawString("Round: "+round,50,105);
+		g.drawString("Current Sequence: "+sequence,30,20);
+		g.drawString("Game Over.",55,150);
+		}else {
+		g.setColor(Color.red);
+		g.fillRect(100, 20, 50, 20);
+		g.setColor(Color.orange);
+		g.drawString("Round: "+round,5,55);
+		g.drawString("Current Sequence: "+sequence,30,20);
+}	
+	}
+
+
+	@Override
+	public void setNum(int round, int seq) 
+	{
+		this.round = round;
+		sequence = seq;
+		update();
+		
 	}
 }

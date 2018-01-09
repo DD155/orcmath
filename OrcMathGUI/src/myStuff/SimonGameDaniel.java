@@ -1,6 +1,6 @@
 package myStuff;
 
-import danielComponent.CatalogMakerGUI;
+import guiTeacher.GUIApplication;
 import guiPlayer.*;
 import guiTeacher.GUIApplication;
 

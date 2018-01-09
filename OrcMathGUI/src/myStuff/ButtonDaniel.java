@@ -19,30 +19,28 @@ public class ButtonDaniel extends Button implements ButtonInterfaceDaniel{
 	public ButtonDaniel(int x, int y, int w, int h, String text, Action action) 
 	{
 		super(x, y, w, h,"",null);
+		update();
 
 	}
 
-	public void drawButton(Graphics2D g, boolean hover)
-	{
-		
-		 
-	}
 	@Override
 	public void setColor(Color color) 
 	{
 		this.color = color;
+		this.setBackground(color);
+		update();
 	}
 
 	@Override
 	public void highlight() 
 	{
-		setColor(Color.red);
+		setColor(Color.yellow);
 	}
 
 	@Override
 	public void dim() 
 	{	
-		setColor(color);
+		setColor(this.color);
 	}
 
 }

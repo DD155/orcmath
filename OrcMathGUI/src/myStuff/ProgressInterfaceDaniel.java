@@ -6,7 +6,6 @@ public interface ProgressInterfaceDaniel extends Visible
 {
 
 	void gameOver();
-	void setRound(int round);
-	void setSequenceSize(int size);
+	void setNum(int roundNumber, int sequenceIndex);
 
 }
